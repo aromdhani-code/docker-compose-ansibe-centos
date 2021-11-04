@@ -1,0 +1,33 @@
+---
+- name: install python 3
+  hosts: "{{target_server}}"
+  become_user: jenkins
+  roles:
+    - role: python
+      vars: 
+       python_version: "{{python_version}}"
+- name: Install docker dependency
+  hosts: "{{target_server}}"
+  become_user: jenkins
+  roles:
+    - role: dependencies
+
+- name: Install Docker
+  hosts: "{{target_server}}"
+  become_user: jenkins
+  roles:
+    - role: docker
+      vars:
+        docker_version: "{{docker_version}}"
+- name: Install docker compose 
+  hosts: "{{target_server}}"
+  become_user: jenkins
+  roles:
+    - role: docker-compose
+      vars:
+        docker_compose_version: "{{docker_compose_version}}"
+- name: Run dApplication with docker compose 
+  hosts: "{{target_server}}"
+  become_user: jenkins
+  roles:
+    - role: applications

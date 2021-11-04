@@ -1,0 +1,8 @@
+ - name: create latest directry for nodejs
+   file:
+      path: "/jenkins/tools/nodejs/latest"
+      state: directory
+      owner: jenkins
+      group: jenkins
+      mode: 0775
+      recurse: yes

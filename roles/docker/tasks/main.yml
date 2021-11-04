@@ -1,0 +1,17 @@
+ - name: setup docker compose 
+   copy:
+     template: 
+     src: templates/docker-ce-20.10.9-3.el8.x86_64.rpm
+     dest: "/usr/local/bin/docker-compose/"
+     mode: 0755
+
+ - name: Install Docker Engine,
+   shell: "sudo yum install /tmp/docker-ce-20.10.9-3.el8.x86_64.rpm"
+
+ - name: start docker service  
+   shell: " sudo systemctl start docker"
+
+ - name: clean up  
+   file:
+     path: "/usr/local/bin/docker-compose/docker-ce-20.10.9-3.el8.x86_64.rpm"
+     state: absent

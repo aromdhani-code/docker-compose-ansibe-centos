@@ -1,0 +1,2 @@
+ - name: run application  docker compose 
+   shell: "docker-compose up -d"
